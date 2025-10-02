@@ -1,1 +1,509 @@
-# popiwa-director-guide
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PopiWa Queens Season 4 Director Guide</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #0a0a0a;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+            padding: 0;
+        }
+        
+        .page {
+            width: 1080px;
+            height: 1350px;
+            position: relative;
+            background: linear-gradient(135deg, #1a0033 0%, #2d1b4e 25%, #5c2d5c 50%, #8b2f5e 75%, #b83566 100%);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Sparkle overlay */
+        .page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.3) 1px, transparent 1px),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.2) 1px, transparent 1px),
+                radial-gradient(circle at 40% 70%, rgba(255, 255, 255, 0.25) 1px, transparent 1px),
+                radial-gradient(circle at 90% 80%, rgba(255, 255, 255, 0.2) 1px, transparent 1px),
+                radial-gradient(circle at 10% 90%, rgba(255, 255, 255, 0.3) 1px, transparent 1px),
+                radial-gradient(circle at 60% 15%, rgba(255, 255, 255, 0.25) 1px, transparent 1px),
+                radial-gradient(circle at 30% 85%, rgba(255, 255, 255, 0.2) 1px, transparent 1px);
+            background-size: 200px 200px;
+            pointer-events: none;
+        }
+        
+        .content-box {
+            position: relative;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            margin: 50px;
+            padding: 50px 45px;
+            width: calc(100% - 100px);
+            height: calc(100% - 100px);
+            border-radius: 25px;
+            border: 1px solid rgba(255, 105, 180, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            overflow-y: auto;
+        }
+        
+        /* Hide scrollbar but keep functionality */
+        .content-box::-webkit-scrollbar {
+            display: none;
+        }
+        .content-box {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        /* Page 1 Styles */
+        .logo-space {
+            height: 70px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            letter-spacing: 6px;
+            color: white;
+            font-weight: 300;
+        }
+        
+        .title {
+            text-align: center;
+            font-size: 80px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FF1493, #FF69B4, #FFB6C1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 10px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            line-height: 0.9;
+        }
+        
+        .subtitle {
+            text-align: center;
+            font-size: 38px;
+            color: #FFD1DC;
+            font-weight: 300;
+            letter-spacing: 6px;
+            margin-bottom: 35px;
+        }
+        
+        .section-header {
+            font-size: 30px;
+            color: #FF69B4;
+            font-weight: 700;
+            margin: 30px 0 18px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            letter-spacing: 1px;
+        }
+        
+        .section-header.first {
+            margin-top: 0;
+        }
+        
+        .emoji {
+            font-size: 32px;
+        }
+        
+        .date-box {
+            background: linear-gradient(135deg, rgba(255, 20, 147, 0.25), rgba(255, 105, 180, 0.15));
+            border-left: 4px solid #FF1493;
+            padding: 13px 20px;
+            margin: 8px 0;
+            border-radius: 10px;
+            font-size: 20px;
+            color: white;
+            font-weight: 500;
+        }
+        
+        .info-text {
+            color: #FFD1DC;
+            font-size: 19px;
+            line-height: 1.6;
+            margin: 12px 0;
+        }
+        
+        .info-text.small {
+            font-size: 17px;
+            font-style: italic;
+            opacity: 0.85;
+            margin-top: 18px;
+        }
+        
+        .info-list {
+            margin: 15px 0;
+            padding-left: 0;
+            list-style: none;
+        }
+        
+        .info-list li {
+            color: white;
+            font-size: 19px;
+            line-height: 1.7;
+            padding-left: 32px;
+            position: relative;
+            margin: 8px 0;
+        }
+        
+        .info-list li::before {
+            content: "👑";
+            position: absolute;
+            left: 0;
+            font-size: 22px;
+        }
+        
+        .link-text {
+            color: #87CEEB;
+            font-size: 18px;
+            font-style: italic;
+        }
+        
+        .divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #FF69B4, transparent);
+            margin: 25px 0;
+            opacity: 0.5;
+        }
+
+        /* Page 2 Styles - Perks */
+        .perk-card {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 105, 180, 0.15));
+            border: 2px solid rgba(255, 215, 0, 0.5);
+            border-radius: 15px;
+            padding: 22px;
+            margin: 16px 0;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .perk-card::before {
+            content: '✨';
+            position: absolute;
+            top: 18px;
+            right: 22px;
+            font-size: 30px;
+            opacity: 0.6;
+        }
+
+        .perk-title {
+            font-size: 24px;
+            color: #FFD700;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .perk-text {
+            color: white;
+            font-size: 19px;
+            line-height: 1.5;
+        }
+
+        .code-box {
+            display: inline-block;
+            background: linear-gradient(135deg, #FF1493, #FF69B4);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 24px;
+            letter-spacing: 3px;
+            margin-top: 10px;
+            box-shadow: 0 4px 15px rgba(255, 20, 147, 0.4);
+        }
+
+        .subsection {
+            margin: 22px 0;
+        }
+
+        .subsection-title {
+            font-size: 21px;
+            color: #FFB6C1;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        /* Page 3 Styles */
+        .checklist {
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 12px;
+            padding: 22px;
+            margin-top: 20px;
+        }
+
+        .checklist li::before {
+            content: "✅";
+        }
+
+        .checklist li {
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        .footer-text {
+            text-align: center;
+            margin-top: 28px;
+            padding-top: 22px;
+            border-top: 2px solid rgba(255, 105, 180, 0.5);
+        }
+
+        .footer-text p {
+            color: #FFD700;
+            font-size: 19px;
+            margin: 8px 0;
+        }
+
+        .footer-text .big {
+            font-size: 26px;
+            font-weight: 700;
+            margin-top: 12px;
+        }
+
+        strong {
+            color: #FFD1DC;
+            font-weight: 600;
+        }
+
+        .highlight {
+            color: #FF69B4;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <!-- PAGE 1: Title + Timeline + Resources -->
+    <div class="page">
+        <div class="content-box">
+            <div class="logo-space">PopiWa Queens</div>
+            
+            <h1 class="title">DIRECTOR<br>GUIDE</h1>
+            
+            <div class="section-header first">
+                <span class="emoji">📅</span> SEASON 4 TIMELINE
+            </div>
+            <div class="date-box">Season 4: October 2025 – April 2026</div>
+            <div class="date-box">Performances Begin: March 20, 2026</div>
+            <p class="info-text small">Note: Directors working on previous season routines have full access to resources, but live rehearsals focus on Season 4 choreography.</p>
+            
+            <div class="divider"></div>
+            
+            <div class="section-header">
+                <span class="emoji">🔑</span> SEASON 4 RESOURCES
+            </div>
+            
+            <div class="subsection-title">Season 4 Live Virtual Rehearsals (subject to change)</div>
+            <div class="date-box">📅 Sun, Nov 2 • 1:00 PM AST</div>
+            <div class="date-box">📅 Sat, Dec 13 • 1:00 PM AST</div>
+            <div class="date-box">📅 Sun, Jan 18 • 1:00 PM AST</div>
+            <div class="date-box">📅 Sat, Mar 1 • 1:00 PM AST</div>
+            
+            <ul class="info-list">
+                <li>Zoom links shared in Community WhatsApp Group</li>
+                <li>Local Teams can join in together or individually from home</li>
+                <li>Rehearsals will be recorded and sent out within 24-48hrs</li>
+            </ul>
+            
+            <div class="subsection">
+                <div class="subsection-title">🎥 Director Training Videos</div>
+                <p class="link-text"><a href="https://www.dropbox.com/scl/fo/jnnsv8ymmeb9loymvzmpr/h?rlkey=6x0gedmh5zqulzrbztew23qhz&st=xiaq07vv&dl=0" target="_blank" style="color: #87CEEB; text-decoration: underline;">Access Director Training Videos</a></p>
+            </div>
+            
+            <div class="subsection">
+                <div class="subsection-title">📹 Personalized Feedback (Optional)</div>
+                <p class="info-text">Submit by <strong>10th of month</strong></p>
+            </div>
+            
+            <div class="subsection">
+                <div class="subsection-title">📋 Team Roster Form</div>
+                <p class="link-text"><a href="https://forms.gle/omHXhyEzzztf1v6G9" target="_blank" style="color: #87CEEB; text-decoration: underline;">Complete Team Roster Form</a></p>
+                <p class="info-text small">(Can be sent to your students to complete)</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 2: Director Perks + Team Structure + Recording -->
+    <div class="page">
+        <div class="content-box">
+            <div class="section-header first" style="justify-content: center;">
+                <span class="emoji">👑</span> DIRECTOR PERKS
+            </div>
+            
+            <div class="perk-card">
+                <div class="perk-title">💎 Monthly Director-Only Privates + Q&A</div>
+                <div class="perk-text">Group sessions coordinated in Director WhatsApp Group</div>
+            </div>
+            
+            <div class="perk-card">
+                <div class="perk-title">💎 50% Off Online Classes</div>
+                <div class="perk-text">
+                    Bachata & Salsa Online Classes<br>
+                    Visit <strong><a href="https://www.PopiWaQueens.com" target="_blank" style="color: #FFD1DC; text-decoration: underline;">PopiWaQueens.com</a></strong><br>
+                    Use Code<br>
+                    <div class="code-box">QUEEN2025</div>
+                </div>
+            </div>
+            
+            <div class="perk-card">
+                <div class="perk-title">💎 50% Off 1:1 Private Lessons</div>
+                <div class="perk-text">
+                    <strong>$50/hr</strong><br>
+                    Contact Bianca Via WhatsApp
+                </div>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <div class="section-header">
+                <span class="emoji">👥</span> TEAM STRUCTURE
+            </div>
+            
+            <div class="subsection-title">Team Captain (Optional)</div>
+            <p class="info-text">Consider appointing a Team Captain to help with short orders, additional rehearsals, social media, costume coordination, and performance logistics.</p>
+            
+            <div class="divider"></div>
+            
+            <div class="section-header">
+                <span class="emoji">🎬</span> RECORDING SUGGESTIONS
+            </div>
+            
+            <div class="subsection">
+                <div class="subsection-title">Official Dropbox Videos</div>
+                <p class="info-text">For directors only - not to be shared with students</p>
+            </div>
+            
+            <div class="subsection">
+                <div class="subsection-title">🎵 Season 4 Song</div>
+                <p class="info-text">"Me Aprovecho De Ti" - share with students for practice</p>
+                <p class="link-text"><a href="https://www.dropbox.com/scl/fi/yt5puvkpewawvt11dxnv5/1-Me-Aprovecho-De-Ti.mp3?rlkey=voq7sps5xe38thnhi2y2ht1sq&st=1d8khnp7&dl=0" target="_blank" style="color: #87CEEB; text-decoration: underline;">Download Season 4 Song</a></p>
+            </div>
+            
+            <div class="subsection">
+                <div class="subsection-title">📱 Video Tips</div>
+                <ul class="info-list">
+                    <li>Team captains can capture short clips for social media</li>
+                    <li>Record in 4K</li>
+                    <li>Directors can upload videos to their Dropbox folder</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 3: Social Media + Features + Quick Reference -->
+    <div class="page">
+        <div class="content-box">
+            <div class="section-header first">
+                <span class="emoji">📱</span> SOCIAL MEDIA
+            </div>
+            
+            <ul class="info-list">
+                <li>Tag: <a href="https://www.instagram.com/popiwaqueens/" target="_blank" style="color: #FF69B4; text-decoration: none;">@popiwaqueens</a> <a href="https://www.instagram.com/biancad_popiwa/" target="_blank" style="color: #FF69B4; text-decoration: none;">@biancad_popiwa</a> <a href="https://www.instagram.com/bachatapopiwa/" target="_blank" style="color: #FF69B4; text-decoration: none;">@bachatapopiwa</a></li>
+                <li>Create team IG (optional): <span class="highlight">PopiWa Queens "City"</span><br>(Example: PopiWa Queens NYC)</li>
+            </ul>
+            
+            <div class="divider"></div>
+            
+            <div class="section-header">
+                <span class="emoji">👥</span> COMMUNITY
+            </div>
+            
+            <ul class="info-list">
+                <li>Add all dancers to WhatsApp Community for updates</li>
+                <li>Encourage wearing PopiWa Queens shirts at festivals/events</li>
+            </ul>
+            
+            <div class="divider"></div>
+            
+            <div class="section-header">
+                <span class="emoji">🌟</span> MONTHLY FEATURES
+            </div>
+            
+            <div class="subsection">
+                <div class="subsection-title">Student Spotlight (Due: 5th of the month)</div>
+                <ul class="info-list">
+                    <li>Bianca selects 1-2 directors monthly (via random generator)</li>
+                    <li>Selected director chooses one student to highlight on the PopiWa Queens IG for that month</li>
+                </ul>
+            </div>
+            
+            <div class="subsection">
+                <div class="subsection-title">Content Challenge</div>
+                <ul class="info-list">
+                    <li>Bianca randomly selects 1–2 directors monthly who choose a song</li>
+                    <li>Bianca creates a short choreography pattern to the director's selected song</li>
+                    <li>Teams can learn, record and share (optional but encouraged)</li>
+                </ul>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <div class="section-header">
+                <span class="emoji">👕</span> SHIRTS & COSTUMES
+            </div>
+            
+            <div class="subsection">
+                <div class="subsection-title">Shirts</div>
+                <p class="info-text">💵 €20-30 EUR • Camisetas Bailongas</p>
+            </div>
+            
+            <div class="subsection">
+                <div class="subsection-title">Season 4 Costumes</div>
+                <p class="info-text">💵 $245 + shipping<br>
+                📅 Order 2 months ahead<br>
+                💳 75% deposit required<br>
+                <strong>Encourage dancers to start saving now</strong></p>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <div class="checklist">
+                <div class="section-header" style="margin-top: 0;">
+                    <span class="emoji">📋</span> QUICK REFERENCE
+                </div>
+                <ul class="info-list">
+                    <li>Live Rehearsals: Nov 2, Dec 13, Jan 18, Mar 1 (1PM AST)</li>
+                    <li>Feedback: 10th • Spotlight: 5th</li>
+                    <li>Add dancers to WhatsApp</li>
+                    <li>3+ dancers for performances</li>
+                    <li>Use code <strong>QUEEN2025</strong> for 50% off Online Classes</li>
+                </ul>
+            </div>
+            
+            <div class="footer-text">
+                <p><strong>Questions?</strong> Contact Bianca</p>
+                <p class="big">Many Queens, One Team 👑✨</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
